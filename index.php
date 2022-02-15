@@ -1,11 +1,12 @@
 <?php
-require 'vendor\autoload.php';
+require 'vendor/autoload.php';
 
 use Htlw3r\Pettracker\Model\Owner;
 
-$myOwner = new Owner('TLA','06767690278');
+$myOwner = new Owner('TLA', '06767690278');
 
-$data = 'Name: ' .$myOwner->getName();
+//$data = 'Name: ' . $myOwner->getName() . ' Phonenumber: ' . $myOwner->getPhonenumber();
+$data = "Hello! My name is HONEYPIE, I'm the Cat of {$myOwner->getName()}, please call {$myOwner->getPhonenumber()} - he'll be so glad!";
 
 use Endroid\QrCode\Builder\Builder;
 use Endroid\QrCode\Encoding\Encoding;
@@ -24,14 +25,14 @@ $result = Builder::create()
     ->size(300)
     ->margin(10)
     ->roundBlockSizeMode(new RoundBlockSizeModeMargin())
- //   ->logoPath('/assets/symfony.png')
+    //   ->logoPath('/assets/symfony.png')
     ->labelText('This is the label')
     ->labelFont(new NotoSans(20))
     ->labelAlignment(new LabelAlignmentCenter())
     ->build();
 
 // Directly output the QR code
-header('Content-Type: '.$result->getMimeType());
+header('Content-Type: ' . $result->getMimeType());
 echo $result->getString();
 
 //// Save it to a file

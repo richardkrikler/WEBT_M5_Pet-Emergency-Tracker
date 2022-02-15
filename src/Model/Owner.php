@@ -1,10 +1,12 @@
 <?php
+
 namespace Htlw3r\Pettracker\Model;
 
-class Owner{
+class Owner
+{
 
-private string $name;
-private string $phonenumber;
+    private string $name;
+    private string $phonenumber;
 
     /**
      * @return string
@@ -34,5 +36,4 @@ private string $phonenumber;
 
 
 }
-
 
