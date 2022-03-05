@@ -34,6 +34,9 @@ class Owner
         $this->phonenumber = $phonenumber;
     }
 
-
+    public function isPhoneNumberValid(): bool
+    {
+        return (bool) preg_match('/^([+]\d{1,2}\s?)?\d{2,3}[\s]?\d{2,3}[\s]?\d{3,5}$/', self::getPhonenumber());
+    }
 }
 

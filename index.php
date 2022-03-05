@@ -15,12 +15,11 @@ use Endroid\QrCode\Writer\PngWriter;
 $phoneCheck = 1;
 
 if (isset($_GET['name']) && isset($_GET['phonenumber'])) {
-    $phoneCheck = preg_match('/^[+]\d{1,3}\s?\d{3}\s?\d{3}\s?\d{4}$/', $_GET['phonenumber']);
+    $myOwner = new Owner($_GET['name'], $_GET['phonenumber']);
+    $phoneCheck = $myOwner->isPhoneNumberValid();
 
-    if ($phoneCheck === 1) {
-        $myOwner = new Owner($_GET['name'], $_GET['phonenumber']);
-
-        $data = "Hello! My name is HONEYPIE, I'm the Cat of {$myOwner->getName()}, please call {$myOwner->getPhonenumber()} - he'll be so glad!";
+    if ($phoneCheck) {
+        $data = "Hello! I'm the Pet of {$myOwner->getName()}, please call {$myOwner->getPhonenumber()} - he/she'll be so glad!";
 
         $result = Builder::create()
             ->writer(new PngWriter())
