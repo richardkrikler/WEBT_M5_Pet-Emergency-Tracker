@@ -12,7 +12,7 @@ use Endroid\QrCode\Label\Font\NotoSans;
 use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
 use Endroid\QrCode\Writer\PngWriter;
 
-$phoneCheck = 1;
+$phoneCheck = true;
 
 if (isset($_GET['name']) && isset($_GET['phonenumber'])) {
     $myOwner = new Owner($_GET['name'], $_GET['phonenumber']);
@@ -60,7 +60,7 @@ if (isset($_GET['name']) && isset($_GET['phonenumber'])) {
     </div>
 
     <?php
-    if ($phoneCheck === 0) {
+    if (!$phoneCheck) {
         echo <<<PHONE_ERROR
     <div role="alert" class="bg-amber-600 rounded-md drop-shadow-md m-5 sm:w-5/12 w-11/12">
         <div class="bg-red-500 text-white font-bold rounded-t-md px-4 py-2">
